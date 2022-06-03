@@ -6,17 +6,10 @@ local LocalPlayer = Players.LocalPlayer
 
 game.Players.PlayerRemoving:Connect(function(plr)
 	if plr == game.Players.LocalPlayer then
-		local Rejoin = coroutine.create(function()
-			local Success, ErrorMessage = pcall(function()
-				TeleportService:Teleport(game.PlaceId, LocalPlayer)
-				syn.queue_on_teleport(loadstring(game:HttpGet("https://raw.githubusercontent.com/Astro-beep/strawhook/main/main", true))())
-			end)
-
-			if ErrorMessage and not Success then
-				warn(ErrorMessage)
-			end
+		game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
+    		if State == Enum.TeleportState.Started then
+        	syn.queue_on_teleport("https://raw.githubusercontent.com/Astro-beep/strawhook/main/main")
+    		end
 		end)
-
-		coroutine.resume(Rejoin)
 	end
 end)
