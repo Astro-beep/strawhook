@@ -9,7 +9,7 @@ game.Players.PlayerRemoving:Connect(function(plr)
 		local Rejoin = coroutine.create(function()
 			local Success, ErrorMessage = pcall(function()
 				TeleportService:Teleport(game.PlaceId, LocalPlayer)
-				syn.queue_on_teleport(loadstring(game:HttpGet("https://raw.githubusercontent.com/VoidMasterX/strawhook/main/script.lua", true))())
+				syn.queue_on_teleport(loadstring(game:HttpGet("https://raw.githubusercontent.com/Astro-beep/strawhook/main/main", true))())
 			end)
 
 			if ErrorMessage and not Success then
